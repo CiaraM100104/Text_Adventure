@@ -1,0 +1,5 @@
+Entrance
+Hallway
+Bedroom
+Living Room
+Backyard
