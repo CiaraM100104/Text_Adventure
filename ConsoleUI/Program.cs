@@ -20,6 +20,7 @@ namespace ConsoleUI
         {
             int defaultHealth = 50;
             int newHealth = 50;
+            int damageDone = 0;
 
 
             try
@@ -92,7 +93,8 @@ namespace ConsoleUI
                             if (newHealth == 50)
                             {
                                 newHealth = GameSystems.DecreasingHealth(ref defaultHealth);
-                                Console.WriteLine("The enemies health is now " + newHealth);
+                                damageDone = GameSystems.HealthSubtraction(ref damageDone);
+                                Console.WriteLine("The enemies health is now " + newHealth + " You did " + damageDone + " making the damage total " + (50 - newHealth));
                             }
                             else if (newHealth <= 0)
                             {
@@ -101,8 +103,9 @@ namespace ConsoleUI
                             }
                             else
                             {
+                                damageDone = GameSystems.HealthSubtraction(ref damageDone); 
                                 newHealth = GameSystems.DecreasingHealth(ref newHealth);
-                                Console.WriteLine("The enemies health is now " + newHealth);
+                                Console.WriteLine("The enemies health is now " + newHealth + " You did " + damageDone + " making the damage total " + (50 - newHealth));
                             }
                             break;
                         case "4":

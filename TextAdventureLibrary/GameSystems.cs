@@ -37,13 +37,14 @@ namespace TextAdventureLibrary
 
 
 
-        public static void HealthSubtraction(ref int enemyHealth)
+        public static int HealthSubtraction(ref int enemyHealth)
         {
             int healthDeduction = 0;
             Random rand = new Random();
             healthDeduction = rand.Next(1, 21);
 
             enemyHealth = enemyHealth - healthDeduction;
+            return healthDeduction;
 
         }
 
