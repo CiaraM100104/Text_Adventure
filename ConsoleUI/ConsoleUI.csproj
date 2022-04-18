@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="items.csv" />
+    <None Include="Mobs.csv" />
+    <None Include="potions.csv" />
+    <None Include="Rooms1.csv" />
+    <None Include="treasure.csv" />
+    <None Include="weapons.csv" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="items.txt">

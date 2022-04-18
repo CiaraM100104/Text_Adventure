@@ -11,11 +11,12 @@ namespace TextAdventureLibrary
     {
         public static List<string> RoomFileReader()
         {
+
             List<string> returnList = new List<string>();
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("rooms.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\Rooms1.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
@@ -37,7 +38,7 @@ namespace TextAdventureLibrary
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("items.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\items.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
@@ -59,7 +60,7 @@ namespace TextAdventureLibrary
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("mobs.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\Mobs.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
@@ -81,7 +82,7 @@ namespace TextAdventureLibrary
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("potions.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\potions.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
@@ -103,7 +104,7 @@ namespace TextAdventureLibrary
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("weapons.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\weapons.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
@@ -125,7 +126,7 @@ namespace TextAdventureLibrary
             StreamReader inputfile;
             try
             {
-                inputfile = File.OpenText("treasure.txt");
+                inputfile = File.OpenText(@"C:\Users\snowt\source\repos\TextAdventure\ConsoleUI\treasure.csv");
 
                 while (inputfile.EndOfStream == false)
                 {
