@@ -55,6 +55,8 @@ namespace TextAdventureLibrary
 
         }
 
+
+
         public static void HealthSubtraction(ref int enemyHealth)
         {
             int healthDeduction = 0;
@@ -62,6 +64,7 @@ namespace TextAdventureLibrary
             healthDeduction = rand.Next(1, 21);
 
             enemyHealth = enemyHealth - healthDeduction;
+            return healthDeduction;
 
         }
 
