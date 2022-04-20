@@ -19,8 +19,8 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             int defaultHealth = 50;
-            int newHealth = 50;
             int damageDone = 0;
+            int hp;
 
 
             try
@@ -52,6 +52,7 @@ namespace ConsoleUI
                     {
                         valid = true;
                         Console.WriteLine("Enjoy the game! If you need help just type in 'h'.");
+                        Console.WriteLine("");
                     }
                 }
                 Player currentPlayer = new Player(playerName, playerPassword, playerRace, playerClass);
@@ -62,7 +63,8 @@ namespace ConsoleUI
                 int roomLocation = 0;
                 bool exit = false;
 
-                List<Items> inventoryList = new List<Items>();
+                List<Items> itemInventoryList = new List<Items>();
+                List<Weapon> weaponInventoryList = new List<Weapon>();
 
 
                 List<string> items = ReadFile.ItemsFileReader();
@@ -74,7 +76,8 @@ namespace ConsoleUI
 
                 List<Room> playerRooms = new List<Room>();
                 List<Items> gameItems = new List<Items>();
-                List<Mob> gameMobs = new List<Mob>(); 
+                List<Mob> gameMobs = new List<Mob>();
+                List<Weapon> gameWeapons = new List<Weapon>();
 
 
                 foreach (string room in rooms)
@@ -87,7 +90,8 @@ namespace ConsoleUI
                 foreach (string mob in mobs)
                 {
                     string[] tokens = mob.Split(',');
-                    Mob gameMob = new Mob(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5], tokens[6], tokens[7]);
+                    Int32.TryParse(tokens[4], out hp);
+                    Mob gameMob = new Mob(tokens[0], tokens[1], tokens[2], tokens[3], hp, tokens[5], tokens[6], tokens[7]);
                     gameMobs.Add(gameMob);
                 }
 
@@ -98,11 +102,23 @@ namespace ConsoleUI
                     gameItems.Add(gameItem);
                 }
 
+                foreach (string weapon in weapons)
+                {
+                    string[] tokens = weapon.Split(',');
+                    Weapon gameWeapon = new Weapon(tokens[0], tokens[1], tokens[2], tokens[3], tokens[4], tokens[5]);
+                    gameWeapons.Add(gameWeapon);
+                }
+
+                int newHealth = gameMobs[roomLocation].hp; 
 
                 while (exit == false)
                 {
+
+
+
                     Console.WriteLine(playerRooms[roomLocation]);
                     Console.WriteLine(gameMobs[roomLocation]);
+                    Console.WriteLine("");
                     Console.WriteLine("Enter a choice > ");
                     string input = Console.ReadLine();
                     Console.WriteLine(); 
@@ -117,7 +133,7 @@ namespace ConsoleUI
                             Console.WriteLine("2. Move South ");
                             Console.WriteLine("3. Move East");
                             Console.WriteLine("4. Move West");
-                            Console.WriteLine("5. Display All information within the game");
+                            Console.WriteLine("5. Display All information within the game(Not implemented yet)");
                             Console.WriteLine("6. Display Inventory");
                             Console.WriteLine("7. Pick up item");
                             Console.WriteLine("8. Attack enemy");
@@ -141,30 +157,30 @@ namespace ConsoleUI
                                 Console.WriteLine();
                             }
                             break;
-                        case "3":
+                        case "8":
 
-                            if (newHealth == 50)
+                            if (newHealth >= 50)
                             {
-                                newHealth = GameSystems.DecreasingHealth(ref defaultHealth);
+                                newHealth = GameSystems.DecreasingHealth(gameMobs[roomLocation].hp);
                                 damageDone = GameSystems.HealthSubtraction(ref damageDone);
                                 Console.WriteLine("The enemies health is now " + newHealth + " You did " + damageDone + " making the damage total " + (50 - newHealth));
                             }
                             else if (newHealth <= 0)
                             {
                                 Console.WriteLine("The enemy is now dead. You decide to move on to the next one.");
-                                newHealth = 50;
+                                newHealth = gameMobs[roomLocation].hp;
                             }
                             else
                             {
                                 damageDone = GameSystems.HealthSubtraction(ref damageDone); 
-                                newHealth = GameSystems.DecreasingHealth(ref newHealth);
+                                newHealth = GameSystems.DecreasingHealth(newHealth);
                                 Console.WriteLine("The enemies health is now " + newHealth + " You did " + damageDone + " making the damage total " + (50 - newHealth));
                             }
                             break;
-                        case "4":
+                        case "9":
                             exit = true;
                             break;
-                        case "5":
+                        case "3":
                             roomLocation = GameSystems.TravelingSystemEast(ref roomLocation, playerRooms);
                             Console.WriteLine(roomLocation);
                             if (roomLocation > 3)
@@ -174,7 +190,7 @@ namespace ConsoleUI
                             }
 
                             break;
-                        case "6":
+                        case "4":
                             roomLocation = GameSystems.TravelingSystemWest(ref roomLocation);
                             Console.WriteLine(roomLocation);
                             if (roomLocation < 0)
@@ -184,18 +200,41 @@ namespace ConsoleUI
                             }
                             break;
                         case "7":
-                            if (roomLocation == 1 || roomLocation == 4 || roomLocation == 5)
+                            if (roomLocation == 0 || roomLocation == 3 || roomLocation == 4)
                             {
                                 Console.WriteLine("None of these items are of use to you.");
+                                Console.WriteLine();
                             }
-                            else if (roomLocation == 2)
+                            else if (roomLocation == 1)
                             {
-                                
+
+                                Room.addWeapon(gameWeapons[2], weaponInventoryList);
+                                Console.WriteLine("You've picked up " + gameWeapons[2].name);
+
+                                foreach(Weapon weapon in weaponInventoryList)
+                                {
+                                    Console.WriteLine(weapon.name);
+                                }
 
                             }
                             else
                             {
-
+                                Room.addWeapon(gameWeapons[1], weaponInventoryList);
+                                Console.WriteLine("You've picked up " + gameWeapons[1].name);
+                            }
+                            break;
+                        case "6":
+                            Console.WriteLine("Weapons :");
+                            Console.WriteLine("");
+                            foreach (Weapon weapon in weaponInventoryList)
+                            {
+                                Console.WriteLine(weapon.name);
+                            }
+                            Console.WriteLine("Items :");
+                            Console.WriteLine("");
+                            foreach (Items item in itemInventoryList)
+                            {
+                                Console.WriteLine(item.name);
                             }
                             break;
                         default:

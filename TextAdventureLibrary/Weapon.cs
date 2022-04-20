@@ -15,6 +15,16 @@ namespace TextAdventureLibrary
         private string _price;
         private string _damage;
 
+        public Weapon(string idNumber, string name, string description, string damageType, string price, string damage)
+        {
+            _name = name;
+            _idNumber = idNumber;
+            _description = description;
+            _damageType = damageType;
+            _price = price;
+            _damage = damage;
+        }
+
         public string idNumber
         {
             get { return _idNumber; }
@@ -50,5 +60,7 @@ namespace TextAdventureLibrary
             get { return _damage; }
             set { }
         }
+
+      
     }
 }

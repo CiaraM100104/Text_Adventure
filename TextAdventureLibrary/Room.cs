@@ -13,7 +13,7 @@ namespace TextAdventureLibrary
         private string _description;
         private string _exits;
         private string _itemsList;
-        private List<Items> inventory;
+        public List<Items> inventory;
         private List<Weapon> weapons;
 
         public Room(string idNumber, string name, string description, string exits, string itemsList)
@@ -27,14 +27,14 @@ namespace TextAdventureLibrary
 
         }
 
-        public static void addItem(ref Items itemToAdd)
+        public static void addItem(Items itemToAdd, List<Items> playerInventory)
         {
-         
+            playerInventory.Add(itemToAdd);
         }
 
-        public void addWeapon(ref Weapon weaponToAdd)
+        public static void addWeapon(Weapon weaponToAdd, List<Weapon> playerInventory)
         {
-            weapons.Add(weaponToAdd);
+            playerInventory.Add(weaponToAdd);
         }
 
         public string idNumber

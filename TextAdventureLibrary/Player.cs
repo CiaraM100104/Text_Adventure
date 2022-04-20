@@ -31,7 +31,8 @@ namespace TextAdventureLibrary
 
         public static bool checkPassword(ref string password)
         {
-            var regexItem = new Regex("^[a-zA-Z0-9 ]*$");
+            var regexItem = new Regex("[a-zA-Z0-9 ]");
+
 
             if (regexItem.IsMatch(password) && Regex.IsMatch(password, "[A-Z]") && Regex.IsMatch(password, "[a-z]"))
             {
@@ -43,6 +44,46 @@ namespace TextAdventureLibrary
             }
         }
 
-        
+        public int idNumber
+        {
+            get { return _idNumber; }
+            set { }
+        }
+
+        public string name
+        {
+            get { return _name; }
+            set { }
+        }
+
+        public string password
+        {
+            get { return _password; }
+            set { }
+        }
+
+        public string race
+        {
+            get { return _race; }
+            set { }
+        }
+
+        public string playerClass
+        {
+            get { return _class ; }
+            set { }
+        }
+
+        public string ac
+        {
+            get { return _ac; }
+            set { }
+        }
+
+        public override string ToString()
+        {
+            return name;
+        }
+
     }
 }

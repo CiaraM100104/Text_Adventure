@@ -12,21 +12,21 @@ namespace TextAdventureLibrary
         private string _name;
         private string _race;
         private string _class;
-        private string _hp;
+        private int _hp;
         private string _ac;
         private string _weapon;
         private string _description;
 
-        public Mob(string idNumber, string name, string race, string mobClass, string hp, string ac, string weapon, string description)
+        public Mob(string idNumber, string name, string race, string mobClass, int hp, string ac, string weapon, string description)
         {
             _name = name;
-            idNumber = _idNumber;
-            race = _race;
-            mobClass = _class;
-            hp = _hp;
-            ac = _ac;
+            _idNumber = idNumber;
+            _race = race;
+            _class = mobClass;
+            _hp = hp;
+            _ac = ac;
             _weapon = weapon;
-            description = _description;
+            _description = description;
         }
 
         public string idNumber
@@ -49,9 +49,10 @@ namespace TextAdventureLibrary
             get { return _class; }
         }
 
-        public string hp
+        public int hp
         {
             get { return _hp; }
+            set { }
         }
 
         public string ac

@@ -29,34 +29,43 @@ namespace TextAdventureLibrary
         public string idNumber
         {
             get { return _idNumber; }
+            set { }
         }
 
         public string name
         {
             get { return _name; }
+            set { }
         }
 
         public string description
         {
             get { return _description; }
+            set { }
         }
 
         public string price
         {
             get { return _price; }
+            set { }
         }
 
         public string questItem
         {
             get { return _questItem; }
+            set { }
         }
 
         public string required
         {
             get { return _required; }
+            set { }
         }
 
-
+        public override string ToString()
+        {
+            return "You've picked up " + name;
+        }
 
 
     }
