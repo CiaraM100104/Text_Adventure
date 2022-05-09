@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextAdventureLibrary
 {
-    public class Mob
+    public class Mob : LivingCreatures
     {
         private string _idNumber;
         private string _name;
@@ -18,6 +18,7 @@ namespace TextAdventureLibrary
         private string _description;
 
         public Mob(string idNumber, string name, string race, string mobClass, int hp, string ac, string weapon, string description)
+            : base (race, mobClass, ac, name, hp)
         {
             _name = name;
             _idNumber = idNumber;
@@ -34,31 +35,13 @@ namespace TextAdventureLibrary
             get { return _idNumber; }
         }
 
-        public string name
-        {
-            get { return _name; }
-        }
-
-        public string race
-        {
-            get { return _race; }
-        }
 
         public string mobClass
         {
             get { return _class; }
         }
 
-        public int hp
-        {
-            get { return _hp; }
-            set { }
-        }
 
-        public string ac
-        {
-            get { return _ac; }
-        }
 
         public string weapon
         {

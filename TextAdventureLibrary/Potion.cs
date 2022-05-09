@@ -6,39 +6,22 @@ using System.Threading.Tasks;
 
 namespace TextAdventureLibrary
 {
-    public class Potion
+    public class Potion : IngameItem
     {
-        private int _idNumber = 101;
-        private string _name;
-        private string _price;
+
         private string _valueChange;
-        private string _description;
 
-        public Potion(int idNumber, string name, string price, string valueChange, string description)
+        public Potion(string idNumber, string name, string price, string valueChange, string description)
+            : base(name, idNumber, price, description)
         {
-            _name = name;
-            _idNumber = idNumber;
-            _description = description;
             _valueChange = valueChange;
-            _price = price;
-        }
-            public int idNumber
-        {
-            get { return _idNumber; }
-            set { }
+ 
         }
 
-        public string name
-        {
-            get { return _name; }
-            set { }
-        }
 
-        public string description
-        {
-            get { return _description; }
-            set { }
-        }
+
+
+
 
         public string valueChange
         {
@@ -46,11 +29,6 @@ namespace TextAdventureLibrary
             set { }
         }
 
-        public string price
-        {
-            get { return _price; }
-            set { }
-        }
 
         public override string ToString()
         {

@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameSystems.cs" />
+    <Compile Include="IngameItem.cs" />
     <Compile Include="Items.cs" />
+    <Compile Include="LivingCreatures.cs" />
     <Compile Include="Mob.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Potion.cs" />

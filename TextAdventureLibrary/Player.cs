@@ -8,7 +8,7 @@ using System.IO;
 
 namespace TextAdventureLibrary
 {
-    public class Player
+    public class Player : LivingCreatures
     {
         private int _idNumber = 101;
         private string _name;
@@ -20,7 +20,8 @@ namespace TextAdventureLibrary
         private List<Items> inventory;
         private List<Items> quests;
 
-        public Player(string name, string password, string race, string playerclass)
+        public Player(string name, string password, string race, string playerclass, string ac, int hp)
+            : base(race, playerclass, ac, name, hp)
         {
             password = _password;
             name = _name;
@@ -50,11 +51,7 @@ namespace TextAdventureLibrary
             set { }
         }
 
-        public string name
-        {
-            get { return _name; }
-            set { }
-        }
+
 
         public string password
         {
@@ -62,23 +59,6 @@ namespace TextAdventureLibrary
             set { }
         }
 
-        public string race
-        {
-            get { return _race; }
-            set { }
-        }
-
-        public string playerClass
-        {
-            get { return _class ; }
-            set { }
-        }
-
-        public string ac
-        {
-            get { return _ac; }
-            set { }
-        }
 
         public override string ToString()
         {

@@ -18,7 +18,6 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            int defaultHealth = 50;
             int damageDone = 0;
             int hp;
 
@@ -55,7 +54,7 @@ namespace ConsoleUI
                         Console.WriteLine("");
                     }
                 }
-                Player currentPlayer = new Player(playerName, playerPassword, playerRace, playerClass);
+                Player currentPlayer = new Player(playerName, playerPassword, playerRace, playerClass, "0", 0);
                 outputFile.WriteLine($"{currentPlayer}");
 
                 outputFile.Close();
